@@ -1,0 +1,39 @@
+<%- include("templates/encabezado.ejs") %>
+<%- include("templates/menu.ejs") %>
+<h1>Mostrar usuarios</h1>
+<table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Usuario</th>
+        <th>Password</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+ <tbody>
+  <% usuarios.forEach((usuario) => { %>
+    <tr>
+      <td><%= usuario.id %></td>
+      <td><%= usuario.nombre %></td>
+      <td><%= usuario.usuario %></td>
+      <td><%= usuario.password %></td>
+      <td>
+        <a href="/modificarUsuario/<%= usuario.id %>">Editar</a> / 
+        <a href="/borradoFisicoUsuario/<%= usuario.id %>">Borrado físico</a>
+      </td>
+    </tr>
+  <% }); %>
+
+  <% if (usuarios.length === 0) { %>
+    <tr>
+      <td colspan="5" style="text-align: center; padding: 20px; color: red;">
+        No hay usuarios para mostrar.
+      </td>
+    </tr>
+  <% } %>
+</tbody>
+
+  </table>
+  
+<%- include("templates/pie.ejs") %>
